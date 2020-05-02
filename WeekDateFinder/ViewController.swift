@@ -18,8 +18,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     @IBAction func findDay(_ sender: UIButton) {
-    }
-    
-    
+        
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        
+        // Здесь неправильно извлечен опционал !! изменить строчки
+        dateComponents.day = Int(dateTextField.text!)
+        dateComponents.month = Int(monthTextField.text!)
+        dateComponents.year = Int(yearTextField.text!)
+        
+        //  Создаю дату со спец классом DateFormatter. Далее создаем формат даты http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        
+        //Изходя из текущей даты я хочу получить день недели, поэтому
+        //#2
+        let date = calendar.date(from: dateComponents)
+        //#1
+        let weekday = dateFormatter.string(from: date!)
+        
+        resultLabel.text = weekday
+
 }
 
+}
