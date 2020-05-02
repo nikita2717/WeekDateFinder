@@ -19,13 +19,18 @@ class ViewController: UIViewController {
     
     @IBAction func findDay(_ sender: UIButton) {
         
+        // проверка
+        guard let day = dateTextField.text, let month = monthTextField.text, let year = yearTextField.text else {
+            return
+        }
+        
         let calendar = Calendar.current
         var dateComponents = DateComponents()
         
         // Здесь неправильно извлечен опционал !! изменить строчки
-        dateComponents.day = Int(dateTextField.text!)
-        dateComponents.month = Int(monthTextField.text!)
-        dateComponents.year = Int(yearTextField.text!)
+        dateComponents.day = Int(day)
+        dateComponents.month = Int(month)
+        dateComponents.year = Int(year)
         
         //  Создаю дату со спец классом DateFormatter. Далее создаем формат даты http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns)
         
