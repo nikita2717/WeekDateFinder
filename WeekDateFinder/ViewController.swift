@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var monthTextField: UITextField!
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         dateComponents.year = Int(yearTextField.text!)
         
         //  Создаю дату со спец классом DateFormatter. Далее создаем формат даты http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns)
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         
@@ -39,7 +39,11 @@ class ViewController: UIViewController {
         let weekday = dateFormatter.string(from: date!)
         
         resultLabel.text = weekday
-
-}
-
+    }
+    //Работа с клавиатурой ( переопределение функции touchesBegan)
+    //Функция работает по нажатию на экран.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
