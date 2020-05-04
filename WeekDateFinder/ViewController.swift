@@ -39,9 +39,10 @@ class ViewController: UIViewController {
         
         //Изходя из текущей даты я хочу получить день недели, поэтому
         //#2
-        let date = calendar.date(from: dateComponents)
+        
+        guard let date = calendar.date(from: dateComponents) else { return }
         //#1
-        let weekday = dateFormatter.string(from: date!)
+        let weekday = dateFormatter.string(from: date)
         
         resultLabel.text = weekday
     }
